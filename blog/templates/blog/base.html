@@ -48,7 +48,7 @@
 
     function deletePost(postId) {
         if (confirm('Tem certeza que quer deletar o post?')) {
-            fetch(`/api/post/${postId}/delete/`, {
+            fetch(`/post/${postId}/delete/`, {
                 method: 'POST',
                 headers: {
                     'X-CSRFToken': '{{ csrf_token }}',
