@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}tech insights. blog{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'blog/css/styles.css' %}">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'blog/images/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'blog/images/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'blog/images/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'blog/images/site.webmanifest' %}">
+    <link rel="mask-icon" href="{% static 'blog/images/safari-pinned-tab.svg' %}" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+    <header>
+        <img src="{% static 'blog/images/techinsights.png' %}" alt="Tech Insights Logo" class="logo">
+    </header>
+    <nav>
+        <ul>
+            <li><a href="{% url 'index' %}">home</a></li>
+            <li><a href="{% url 'post_create' %}">criar post</a></li>
+        </ul>
+    </nav>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 tech insights.</p>
+    </footer>
+</body>
+</html>
+<script>
+    function showEditForm(postId) {
+        document.querySelector('#post-' + postId + ' .post-content').style.display = 'none';
+        document.getElementById('edit-form-' + postId).style.display = 'block';
+    }
+
+    function hideEditForm(postId) {
+        document.querySelector('#post-' + postId + ' .post-content').style.display = 'block';
+        document.getElementById('edit-form-' + postId).style.display = 'none';
+    }
+
+    function deletePost(postId) {
+        if (confirm('Tem certeza que quer deletar o post?')) {
+            fetch(`/api/post/${postId}/delete/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                },
+            })
+            .then(response => {
+                if (response.ok) {
+                    document.getElementById('post-' + postId).remove();
+                } else {
+                    alert('Opa, deu ruim!');
+                }
+            });
+        }
+    }
+</script>

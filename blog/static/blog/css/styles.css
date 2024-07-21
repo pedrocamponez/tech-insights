@@ -1,0 +1,117 @@
+body {
+    background-color: #1A1C1B;
+    color: #F7F7F7;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    background-color: #2A2E2E;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+header .logo {
+    left: 1em;
+    max-height: 50px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 1em;
+}
+
+nav ul li a {
+    color: #F7F7F7;
+    text-decoration: none;
+}
+
+main {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.post, .comment {
+    border-bottom: 1px solid #555D58;
+    padding: 1em 0;
+}
+
+.details {
+    color: #555D58;
+}
+
+.create-post-form,
+.post-content {
+    background-color: #2A2E2E;
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.create-post-form label,
+.post-content label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+.create-post-form input[type="text"],
+.create-post-form textarea,
+.post-content input[type="text"],
+.post-content textarea {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 1px solid #555D58;
+    border-radius: 5px;
+    background-color: #1A1C1B;
+    color: #F7F7F7;
+}
+
+.create-post-form button,
+.post-content button,
+.post-content-button {
+    background: linear-gradient(45deg, #4DDDFF, #11E9FE, #00FEFB);
+    border: none;
+    color: #1A1C1B;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.create-post-form button:hover,
+.post-content button:hover,
+.post-content-button:hover {
+    background: linear-gradient(45deg, #00FEFB, #11E9FE, #4DDDFF);
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+    background-color: #2A2E2E;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: auto;
+}
+
+.edit-form {
+    display: none;
+    margin-top: 1em;
+}

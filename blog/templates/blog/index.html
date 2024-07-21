@@ -1,0 +1,34 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}home - tech insights.{% endblock %}
+
+{% block content %}
+    <h2>posts recentes</h2>
+    {% for post in posts %}
+        <div class="post" id="post-{{ post.id }}">
+            <div class="post-content">
+                <h3>{{ post.title }}</h3>
+                <p class="details">{{ post.created_at }}</p>
+                <p>{{ post.content }}</p>
+                <button onclick="showEditForm({{ post.id }})">editar post</button>
+                <button onclick="deletePost({{ post.id }})">deletar post</button>
+            </div>
+            <form id="edit-form-{{ post.id }}" class="edit-form" method="post"
+                  action="{% url 'post_edit' post.id %}" style="display: none;">
+                {% csrf_token %}
+                <div class="post-content">
+                    <label for="id_title">título</label>
+                    <input type="text" name="title" value="{{ post.title }}" required>
+                    <label for="id_content">conteúdo</label>
+                    <textarea name="content" required>{{ post.content }}</textarea>
+                </div>
+                    <button type="submit" class="post-content-button">
+                        salvar
+                    </button>
+                    <button type="button" class="post-content-button" onclick="hideEditForm({{ post.id }})">
+                        cancelar
+                    </button>
+            </form>
+        </div>
+    {% endfor %}
+{% endblock %}
