@@ -16,7 +16,7 @@ class PostCreateView(CreateView):
     model = Post
     form_class = PostForm
     template_name = 'blog/post_form.html'
-    success_url = '/api/'
+    success_url = '/'
 
     def form_valid(self, form):
         form.save()
