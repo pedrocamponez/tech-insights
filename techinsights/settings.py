@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
 
 # Application definition
 
@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
 
     'storages',
+
+    'pwa',
 ]
 
 REST_FRAMEWORK = {
@@ -154,6 +156,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR / 'blog' / 'static'),
 ]
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR / 'blog' / 'static' / 'blog' / 'js' / 'serviceworker.js')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -191,3 +194,33 @@ STORAGES = {
         "BACKEND": "storages.backends.s3boto3.S3StaticStorage",
     },
 }
+
+PWA_APP_NAME = 'tech-insights.'
+PWA_APP_DESCRIPTION = "Tech Insights. Blog PWA"
+PWA_APP_THEME_COLOR = '#2A2E2E'
+PWA_APP_BACKGROUND_COLOR = '#1A1C1B'
+PWA_APP_DISPLAY = 'standalone'
+PWA_APP_SCOPE = '/'
+PWA_APP_ORIENTATION = 'any'
+PWA_APP_START_URL = '/'
+PWA_APP_STATUS_BAR_COLOR = 'default'
+PWA_APP_ICONS = [
+    {
+        'src': 'static/blog/images/techinsights-favicon.png',
+        'sizes': '160x160'
+    }
+]
+PWA_APP_ICONS_APPLE = [
+    {
+        'src': 'static/blog/images/techinsights-favicon.png',
+        'sizes': '160x160'
+    }
+]
+PWA_APP_SPLASH_SCREEN = [
+    {
+        'src': 'static/blog/images/techinsights-favicon.png',
+        'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)'
+    }
+]
+PWA_APP_DIR = 'ltr'
+PWA_APP_LANG = 'pt-BR'
